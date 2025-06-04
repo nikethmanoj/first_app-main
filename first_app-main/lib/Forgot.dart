@@ -1,8 +1,15 @@
+import 'package:first_app/services.dart';
 import 'package:flutter/material.dart';
 
-class Forgot extends StatelessWidget {
+class Forgot extends StatefulWidget {
   const Forgot({super.key});
 
+  @override
+  State<Forgot> createState() => _ForgotState();
+}
+
+class _ForgotState extends State<Forgot> {
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +27,7 @@ class Forgot extends StatelessWidget {
           ),
           SizedBox(height: 20),
           TextField(
+            controller: emailController,
             decoration: InputDecoration(
               prefix: Icon(Icons.email),
               hintText: "e-mail",
@@ -35,7 +43,9 @@ class Forgot extends StatelessWidget {
           ),
           SizedBox(height: 20),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              forgot(email: emailController.text, context: context);
+            },
             child: Text("Send confirmation", style: TextStyle(fontSize: 15)),
           ),
         ],

@@ -1,8 +1,20 @@
 import 'package:first_app/Loginpage.dart';
+import 'package:first_app/services.dart';
 import 'package:flutter/material.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   const Signup({super.key});
+
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordControler = TextEditingController();
+
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +31,9 @@ class Signup extends StatelessWidget {
               fontSize: 25,
             ),
           ),
-          SizedBox(height:20),
+          SizedBox(height: 20),
           TextField(
+            controller: emailController,
             decoration: InputDecoration(
               prefix: Icon(Icons.email),
               hintText: "Enter e-mail id",
@@ -28,34 +41,48 @@ class Signup extends StatelessWidget {
               fillColor: const Color.fromARGB(255, 250, 251, 249),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
-              )
+              ),
             ),
           ),
-          SizedBox(height:10),
+          SizedBox(height: 10),
           TextField(
+            controller: passwordControler,
             decoration: InputDecoration(
               prefix: Icon(Icons.visibility_off),
               hintText: "Enter password",
               filled: true,
-              fillColor: const Color.fromARGB(255, 249, 249, 247), 
+              fillColor: const Color.fromARGB(255, 249, 249, 247),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
-              )   
+              ),
             ),
           ),
-          SizedBox(height:10),
-           TextField(
+          SizedBox(height: 10),
+          TextField(
+            controller: confirmPasswordController,
             decoration: InputDecoration(
               prefix: Icon(Icons.visibility_off),
               hintText: "Confirm password",
               filled: true,
               fillColor: const Color.fromARGB(255, 231, 236, 239),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20)
-              )
+                borderRadius: BorderRadius.circular(20),
+              ),
             ),
           ),
-            SizedBox(height: 300),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Register(
+                email: emailController.text,
+                password: passwordControler.text,
+                confirmpassword: confirmPasswordController.text,
+                context: context,
+              );
+            },
+            child: Text("Signup"),
+          ),
+          SizedBox(height: 300),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -67,14 +94,17 @@ class Signup extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              TextButton(onPressed: () {
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>Loginpage()),
-              );
-              }, child: Text("Login")),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Loginpage()),
+                  );
+                },
+                child: Text("Login"),
+              ),
             ],
-          ), 
+          ),
         ],
       ),
     );

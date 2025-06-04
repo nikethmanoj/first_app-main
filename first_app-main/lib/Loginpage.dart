@@ -1,10 +1,18 @@
 import 'package:first_app/Forgot.dart';
+import 'package:first_app/services.dart';
 import 'package:first_app/signup.dart';
 import 'package:flutter/material.dart';
 
-class Loginpage extends StatelessWidget {
+class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
 
+  @override
+  State<Loginpage> createState() => _LoginpageState();
+}
+
+class _LoginpageState extends State<Loginpage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +30,7 @@ class Loginpage extends StatelessWidget {
           ),
           SizedBox(height: 20),
           TextField(
+            controller: emailController,
             decoration: InputDecoration(
               prefix: Icon(Icons.email),
               hintText: "Enter e-mail id",
@@ -37,6 +46,7 @@ class Loginpage extends StatelessWidget {
           ),
           SizedBox(height: 20),
           TextField(
+            controller: passwordController,
             obscureText: true,
             decoration: InputDecoration(
               prefix: Icon(Icons.visibility_off),
@@ -63,6 +73,11 @@ class Loginpage extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
+              login(
+                email: emailController.text,
+                password: passwordController.text,
+                context: context,
+              );
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Loginpage()),
@@ -90,12 +105,15 @@ class Loginpage extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              TextButton(onPressed: () {
-                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Signup()),
-              );
-              }, child: Text("Signup")),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Signup()),
+                  );
+                },
+                child: Text("Signup"),
+              ),
             ],
           ),
         ],
