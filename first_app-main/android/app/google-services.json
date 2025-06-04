@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "243514443201",
+    "project_id": "bmw-app-17b54",
+    "storage_bucket": "bmw-app-17b54.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243514443201:android:10f32dd7eb1b34d5bb5b40",
+        "android_client_info": {
+          "package_name": "com.example.first_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXfgAaeXkzEMFsTwiqpw83WPMJQvF3Xv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
